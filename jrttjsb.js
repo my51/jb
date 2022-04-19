@@ -1,7 +1,7 @@
 /*
 今日头条极速版
 IOS/安卓: 今日头条极速版
-邀请码： CYET6KHK
+邀请码： 
 老用户每天几毛，新用户可能收益高点
 普通版定时： 1-59/15 6-23 * * *
 激进版定时： 1-59/5 * * * *
@@ -33,9 +33,9 @@ const logDebug = 0
 let notifyStr = ''
 let rndtime = "" //毫秒
 let httpResult //global buffer
-let host = 'i.snssdk.com'
+let host = 'api5-normal-lf.toutiaoapi.com'
 let hostname = 'https://' + host
-let userAgent = ($.isNode() ? process.env.jrttjsbUA : $.getdata('jrttjsbUA')) || 'Dalvik/2.1.0 (Linux; U; Android 7.1.2; VOG-AL10 Build/HUAWEIVOG-AL10) NewsArticle/8.2.8 tt-ok/3.10.0.2';
+let userAgent = ($.isNode() ? process.env.jrttjsbUA : $.getdata('jrttjsbUA')) || 'Dalvik/2.1.0 (Linux; U; Android 10; Mi 10 MIUI/V11.0.25.0.QJBCNXM) NewsArticle/8.7.6 cronet/TTNetVersion:f2a033a5 2021-11-02 QuicVersion:705d0b81 2021-08-12';
 let userAgentArr = []
 let userHeader = ($.isNode() ? process.env.jrttjsbHeader : $.getdata('jrttjsbHeader')) || '';
 let userHeaderArr = []
@@ -76,7 +76,7 @@ let adIdList = [26, 181, 186, 187, 188, 189, 190, 195, 210, 214, 216, 225, 308, 
     .finally(() => $.done())
 
 function showUpdateMsg() {
-    console.log('\n2021.12.15 9:30 更新：增加推送奖励，修复一个UA的bug，更改默认UA为安卓\n')
+    console.log('\n2022.04.20 9:30 更新：增加推送奖励，修复一个UA的bug，更改默认UA为安卓\n')
 }
 
 //通知
