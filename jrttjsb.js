@@ -14,7 +14,7 @@ IOS/安卓: 今日头条极速版
 ============Quantumultx===============
 [task_local]
 #今日头条极速版
-1-59/15 6-23 * * * https://github.com/JDWXX/ql_all/blob/master/qt/aqc/jrttjsb.js, tag=今日头条极速版, img-url=https://raw.githubusercontent.com/58xinian/icon/master/jxcfd.png, enabled=true
+1-59/15 6-23 * * * https://raw.githubusercontent.com/my51/jb/main/jrttjsb.js, tag=今日头条极速版, img-url=https://raw.githubusercontent.com/58xinian/icon/master/jxcfd.png, enabled=true
 
 ================Loon==============
 [Script]
@@ -44,7 +44,7 @@ let jrttjsbFarm = ($.isNode() ? process.env.jrttjsbFarm : $.getdata('jrttjsbFarm
 let userIdx = 0
 let UAcount = 0
 let userStatus = []
-let maxReadPerRun = ($.isNode() ? process.env.jrttjsbReadNum : $.getdata('jrttjsbReadNum')) || 1;
+let maxReadPerRun = ($.isNode() ? process.env.jrttjsbReadNum : $.getdata('jrttjsbReadNum')) || 0;
 let readList = []
 
 let validList = []
@@ -290,7 +290,7 @@ async function DailyPushReward() {
 //阅读翻倍
 async function ReadDouble() {
     let caller = printCaller()
-    let url = `${hostname}/luckycat/lite/v1/activity/double_whole_scene_task/?aid=`
+    let url = `${hostname}/luckycat/lite/v1/activity/double_whole_scene_task/?aid=35&update_version_code=87610&os_version=10&device_platform=android`
     let body = `{}`
     let urlObject = populatePostUrl(url,body)
     await httpPost(urlObject,caller)
@@ -306,7 +306,7 @@ async function ReadDouble() {
 
 async function GetNewTabs() {
     let caller = printCaller()
-    let url = `${hostname}/score_task/v1/user/new_tabs/?aid=`
+    let url = `${hostname}/score_task/v1/user/new_tabs/?aid=35&update_version_code=87610&os_version=10&device_platform=android&device_type=Mi+10`
     let urlObject = populateGetUrl(url)
     await httpGet(urlObject,caller)
     let result = httpResult;
@@ -325,7 +325,7 @@ async function GetNewTabs() {
 async function PostInviteCode() {
     let caller = printCaller()
     let body = `{"invitecode" : "1173836876"}`
-    let url = `${hostname}/luckycat/lite/v1/invite/post_invite_code/?aid=`
+    let url = `${hostname}/luckycat/lite/v1/invite/post_invite_code/?aid=35&update_version_code=87610&os_version=10&device_platform=android&device_type=Mi+10`
     let urlObject = populatePostUrl(url,body)
     await httpPost(urlObject,caller)
     let result = httpResult;
@@ -389,7 +389,7 @@ async function QueryUserInfo(doTask) {
 //签到
 async function SignIn() {
     let caller = printCaller()
-    let url = `${hostname}/luckycat/lite/v1/sign_in/action?aid=`
+    let url = `${hostname}/luckycat/lite/v1/sign_in/action?manifest_version_code=8760&_rticket=1650476200251&sa_enable=0&act_token=6RG20vMLG99kWgP4-JPCXjH4d2MoJtxqis-UJMfVBauCrF2w7u9fyclvyNrcLtUok76I1X_av6M7TzAlj3xQew&iid=1341841701869182&channel=lite_xiaomi_64&isTTWebView=1&use_ecpm=0&device_type=Mi+10&language=zh&host_abi=arm64-v8a&ab_client=a1%2Ce1%2Cf2%2Cg2%2Cf7&resolution=1080*2120&cookie_base=xxv-DM4hSZjeBbwTMG4VpEd-s8y5trhdfc9QuvXd6l-cIxOfIuAtilLYgN0_tHLBvc4HaNuqTOKX2XOA1Me9lf0C88iRwXX3h6i3vk_Udsg&is_pad=0&update_version_code=87610&dq_param=1&status_bar_height=32&cdid=027d4278-d6cf-4217-974b-2647a9791411&ab_group=z2&os_api=29&abflag=3&rit=coin&dpi=440&ab_feature=z1&cookie_data=K-5O5M5eqoUHPRzT_jWTmw&ac=wifi&act_hash=dedbaf4265335985d5667d77ca98f8d9&device_id=720870999070232&os=android&pass_through=default&os_version=10&version_code=876&session_id=185f8bdb-8a95-4aa2-834b-e4274d7eeb26&tma_jssdk_version=2.8.0.16&app_name=news_article_lite&ab_version=668906%2C3937374%2C668904%2C3937345%2C668903%2C3937392%2C668907%2C3937398%2C1859937%2C668908%2C3937402%2C668905%2C3937366%2C3801462%2C3520490%2C3540012%2C3596061%2C3958946&version_name=8.7.6&device_brand=Xiaomi&ssmix=a&plugin_state=139681997156381&device_platform=android&polaris_version=1.0.5&aid=35&rom_version=miui_v11_v11.0.25.0.qjbcnxm&luckydog_base=qG0Sn8Nue65F3MxBkjB-EW7ni81H0J7NsN9QTN3x8FPllOV7mkXvfYtRAsDKMsI4WxPjyb44eb4iLTTLbXOAUohY2Zv9dI1QXtS79j_GdEBHSVv8mxCtG-mD_aUrc7Ftfw0v7Gu4lt7gnQ1BIw_42k3F1E60Q8jD7LGzqHWDFvs&luckydog_data=H_tviv5pCkhGYVzM3xlqO-Udh13I_v0l41nYVB9-BphzihqsXlF_Yilb89peZOinnXtS62jAYvu2gmlGWJjS6_Wg621ASMl_2tcKLhns2aw&luckydog_token=Rc0YYEWhEl8eoCsTBMtn7x6M-06xtV_twh3G1M8zEfPqRlfkgtsZViHX0EjkfO43kfw2p-yZHUiAkETbul6RlA&luckydog_sdk_version=5.0.1-rc.11&luckydog_settings_version=15&luckycat_version_name=5.0.1-rc.24&luckycat_version_code=501024`
     let urlObject = populatePostUrl(url)
     await httpPost(urlObject,caller)
     let result = httpResult;
@@ -424,7 +424,7 @@ async function OpenTreasureBox() {
 async function ExcitationAd(task_id) {
     let caller = printCaller()
     let timeInMS = Math.round(new Date().getTime())
-    let url = `https://api3-normal-lf.toutiaoapi.com/luckycat/lite/v1/task/done/excitation_ad?iid=1341841701869182&device_id=720870999070232&ac=wifi&channel=lite_xiaomi_64&aid=35&app_name=news_article_lite&version_code=876&version_name=8.7.6&device_platform=android&os=android&ab_version=668907%2C3937398%2C1859937%2C668908%2C3937402%2C668905%2C3937366%2C668906%2C3937374%2C668904%2C3937345%2C668903%2C3937392%2C3520490%2C3540012%2C3596061%2C3936294%2C3958946%2C3801462&ab_client=a1%2Ce1%2Cf2%2Cg2%2Cf7&ab_group=z2&ab_feature=z1&abflag=3&ssmix=a&device_type=Mi+10&device_brand=Xiaomi&language=zh&os_api=29&os_version=10&manifest_version_code=8760&resolution=1080*2120&dpi=440&update_version_code=87610&_rticket=1650401139456&sa_enable=0&dq_param=1&plugin_state=139681997156381&isTTWebView=1&session_id=2d6e7fd5-7489-4380-8524-149a44ef963c&host_abi=arm64-v8a&tma_jssdk_version=2.8.0.16&rom_version=miui_v11_v11.0.25.0.qjbcnxm&cdid=027d4278-d6cf-4217-974b-2647a9791411`
+    let url = `https://api5-normal-lf.toutiaoapi.com/luckycat/lite/v1/task/done/excitation_ad?pass_through=default&is_pad=0&act_token=6RG20vMLG99kWgP4-JPCXjH4d2MoJtxqis-UJMfVBauCrF2w7u9fyclvyNrcLtUok76I1X_av6M7TzAlj3xQew&act_hash=dedbaf4265335985d5667d77ca98f8d9&cookie_base=xxv-DM4hSZjeBbwTMG4VpEd-s8y5trhdfc9QuvXd6l-cIxOfIuAtilLYgN0_tHLBvc4HaNuqTOKX2XOA1Me9lf0C88iRwXX3h6i3vk_Udsg&cookie_data=K-5O5M5eqoUHPRzT_jWTmw&iid=1341841701869182&device_id=720870999070232&ac=wifi&channel=lite_xiaomi_64&aid=35&app_name=news_article_lite&version_code=876&version_name=8.7.6&device_platform=android&os=android&ab_version=668906%2C3937374%2C668904%2C3937345%2C668903%2C3937392%2C668907%2C3937398%2C1859937%2C668908%2C3937402%2C668905%2C3937366%2C3801462%2C3520490%2C3540012%2C3596061%2C3958946&ab_client=a1%2Ce1%2Cf2%2Cg2%2Cf7&ab_group=z2&ab_feature=z1&abflag=3&ssmix=a&device_type=Mi+10&device_brand=Xiaomi&language=zh&os_api=29&os_version=10&manifest_version_code=8760&resolution=1080*2120&dpi=440&update_version_code=87610&_rticket=1650476698414&sa_enable=0&dq_param=1&plugin_state=139681997156381&isTTWebView=1&session_id=22f3a101-f451-4506-87c2-c07ed70225db&host_abi=arm64-v8a&tma_jssdk_version=2.8.0.16&rom_version=miui_v11_v11.0.25.0.qjbcnxm&cdid=027d4278-d6cf-4217-974b-2647a9791411&polaris_version=1.0.5&status_bar_height=32&luckydog_base=qG0Sn8Nue65F3MxBkjB-EW7ni81H0J7NsN9QTN3x8FPllOV7mkXvfYtRAsDKMsI4WxPjyb44eb4iLTTLbXOAUohY2Zv9dI1QXtS79j_GdEBHSVv8mxCtG-mD_aUrc7Ftfw0v7Gu4lt7gnQ1BIw_42k3F1E60Q8jD7LGzqHWDFvs&luckydog_data=H_tviv5pCkhGYVzM3xlqO-Udh13I_v0l41nYVB9-BphzihqsXlF_Yilb89peZOinnXtS62jAYvu2gmlGWJjS6_Wg621ASMl_2tcKLhns2aw&luckydog_token=Rc0YYEWhEl8eoCsTBMtn7x6M-06xtV_twh3G1M8zEfPqRlfkgtsZViHX0EjkfO43kfw2p-yZHUiAkETbul6RlA&luckydog_sdk_version=5.0.1-rc.11&luckydog_settings_version=15&luckycat_version_name=5.0.1-rc.24&luckycat_version_code=501024`
     let body = `{"ad_alias_position":"coin","task_key":"excitation_ad", "task_id" : "${task_id}"}`
     let urlObject = populatePostUrl(url,body)
     await httpPost(urlObject,caller)
@@ -443,7 +443,7 @@ async function ExcitationAd(task_id) {
 //查询走路状态
 async function QueryWalkInfo() {
     let caller = printCaller()
-    let url = `https://api3-normal-lf.toutiaoapi.com/luckycat/lite/v1/walk/page_data/?_request_from=web&scm_build_version=1.0.0.1639&sa_enable=0&act_token=6RG20vMLG99kWgP4-JPCXjH4d2MoJtxqis-UJMfVBauCrF2w7u9fyclvyNrcLtUok76I1X_av6M7TzAlj3xQew&channel=lite_xiaomi_64&luckycat_version_code=501024&device_type=Mi+10&language=zh&ab_client=a1%2Ce1%2Cf2%2Cg2%2Cf7&resolution=1080*2120&cookie_base=xxv-DM4hSZjeBbwTMG4VpEd-s8y5trhdfc9QuvXd6l-cIxOfIuAtilLYgN0_tHLBvc4HaNuqTOKX2XOA1Me9lf0C88iRwXX3h6i3vk_Udsg&update_version_code=87610&cdid=027d4278-d6cf-4217-974b-2647a9791411&ab_group=z2&abflag=3&ac=wifi&act_hash=dedbaf4265335985d5667d77ca98f8d9&device_id=720870999070232&version_code=876&ab_version=668907%2C3937398%2C1859937%2C668908%2C3937402%2C668905%2C3937366%2C668906%2C3937374%2C668904%2C3937345%2C668903%2C3937392%2C3520490%2C3540012%2C3596061%2C3936294%2C3958946%2C3801462&luckydog_base=L-Qs4_NsyjW98aRJyI10ipWoEeB-zVYalDVrBOR55JJJyBu7V-9t6Rs65lEoO76T9pCEaZGTk_UQ8-SlGi9Na2iUbjhGH0cr7OZ6daTUYfAcMYIOpPhMIu9ay8WRbqfbr2oFVkvds-OmN7UIdy6xg8rOAE0h1Fv_ojfvKzYSWYA&plugin_state=139681997156381&device_platform=android&aid=35&rom_version=miui_v11_v11.0.25.0.qjbcnxm&manifest_version_code=8760&_rticket=1650400952247&iid=1341841701869182&isTTWebView=1&host_abi=arm64-v8a&is_pad=0&dq_param=1&status_bar_height=32&os_api=29&dpi=440&luckydog_data=pLpRmOMroS6Yruu34epx1q95m9AFI3O76Gq2bItg2GeD7Udv6q-5GvE9whReXRAXP0RKgjXP2Fh8jQ_4HPFFcw&ab_feature=z1&cookie_data=K-5O5M5eqoUHPRzT_jWTmw&os=android&pass_through=default&os_version=10&session_id=b9e651bb-be25-4e7d-815b-4c6b5adfe856&luckydog_token=Rc0YYEWhEl8eoCsTBMtn7x6M-06xtV_twh3G1M8zEfPqRlfkgtsZViHX0EjkfO43kfw2p-yZHUiAkETbul6RlA&tma_jssdk_version=2.8.0.16&app_name=news_article_lite&luckycat_version_name=5.0.1-rc.24&version_name=8.7.6&device_brand=Xiaomi&ssmix=a&luckydog_settings_version=15&luckydog_sdk_version=5.0.1-rc.11`
+    let url = `${hostname}/luckycat/lite/v1/walk/page_data/?_request_from=web&scm_build_version=1.0.0.1639&sa_enable=0&act_token=6RG20vMLG99kWgP4-JPCXjH4d2MoJtxqis-UJMfVBauCrF2w7u9fyclvyNrcLtUok76I1X_av6M7TzAlj3xQew&channel=lite_xiaomi_64&luckycat_version_code=501024&device_type=Mi+10&language=zh&ab_client=a1%2Ce1%2Cf2%2Cg2%2Cf7&resolution=1080*2120&cookie_base=xxv-DM4hSZjeBbwTMG4VpEd-s8y5trhdfc9QuvXd6l-cIxOfIuAtilLYgN0_tHLBvc4HaNuqTOKX2XOA1Me9lf0C88iRwXX3h6i3vk_Udsg&update_version_code=87610&cdid=027d4278-d6cf-4217-974b-2647a9791411&ab_group=z2&abflag=3&ac=wifi&act_hash=dedbaf4265335985d5667d77ca98f8d9&device_id=720870999070232&version_code=876&ab_version=668907%2C3937398%2C1859937%2C668908%2C3937402%2C668905%2C3937366%2C668906%2C3937374%2C668904%2C3937345%2C668903%2C3937392%2C3520490%2C3540012%2C3596061%2C3936294%2C3958946%2C3801462&luckydog_base=L-Qs4_NsyjW98aRJyI10ipWoEeB-zVYalDVrBOR55JJJyBu7V-9t6Rs65lEoO76T9pCEaZGTk_UQ8-SlGi9Na2iUbjhGH0cr7OZ6daTUYfAcMYIOpPhMIu9ay8WRbqfbr2oFVkvds-OmN7UIdy6xg8rOAE0h1Fv_ojfvKzYSWYA&plugin_state=139681997156381&device_platform=android&aid=35&rom_version=miui_v11_v11.0.25.0.qjbcnxm&manifest_version_code=8760&_rticket=1650400952247&iid=1341841701869182&isTTWebView=1&host_abi=arm64-v8a&is_pad=0&dq_param=1&status_bar_height=32&os_api=29&dpi=440&luckydog_data=pLpRmOMroS6Yruu34epx1q95m9AFI3O76Gq2bItg2GeD7Udv6q-5GvE9whReXRAXP0RKgjXP2Fh8jQ_4HPFFcw&ab_feature=z1&cookie_data=K-5O5M5eqoUHPRzT_jWTmw&os=android&pass_through=default&os_version=10&session_id=b9e651bb-be25-4e7d-815b-4c6b5adfe856&luckydog_token=Rc0YYEWhEl8eoCsTBMtn7x6M-06xtV_twh3G1M8zEfPqRlfkgtsZViHX0EjkfO43kfw2p-yZHUiAkETbul6RlA&tma_jssdk_version=2.8.0.16&app_name=news_article_lite&luckycat_version_name=5.0.1-rc.24&version_name=8.7.6&device_brand=Xiaomi&ssmix=a&luckydog_settings_version=15&luckydog_sdk_version=5.0.1-rc.11`
     let urlObject = populateGetUrl(url)
     await httpGet(urlObject,caller)
     let result = httpResult;
@@ -460,7 +460,7 @@ async function QueryWalkInfo() {
 async function GetWalkBonus() {
     let caller = printCaller()
     let nowtime = Math.round(new Date().getTime()/1000)
-    let url = `https://api3-normal-lf.toutiaoapi.com/luckycat/lite/v1/walk/bonus/?manifest_version_code=8760&_rticket=1650401046423&sa_enable=0&act_token=6RG20vMLG99kWgP4-JPCXjH4d2MoJtxqis-UJMfVBauCrF2w7u9fyclvyNrcLtUok76I1X_av6M7TzAlj3xQew&iid=1341841701869182&channel=lite_xiaomi_64&isTTWebView=1&device_type=Mi+10&language=zh&host_abi=arm64-v8a&ab_client=a1%2Ce1%2Cf2%2Cg2%2Cf7&resolution=1080*2120&cookie_base=xxv-DM4hSZjeBbwTMG4VpEd-s8y5trhdfc9QuvXd6l-cIxOfIuAtilLYgN0_tHLBvc4HaNuqTOKX2XOA1Me9lf0C88iRwXX3h6i3vk_Udsg&is_pad=0&update_version_code=87610&dq_param=1&status_bar_height=32&cdid=027d4278-d6cf-4217-974b-2647a9791411&ab_group=z2&os_api=29&abflag=3&dpi=440&ab_feature=z1&cookie_data=K-5O5M5eqoUHPRzT_jWTmw&ac=wifi&act_hash=dedbaf4265335985d5667d77ca98f8d9&device_id=720870999070232&os=android&pass_through=default&os_version=10&version_code=876&session_id=e8b69790-39a5-4d40-b025-ba130ae370d2&tma_jssdk_version=2.8.0.16&app_name=news_article_lite&ab_version=668907%2C3937398%2C1859937%2C668908%2C3937402%2C668905%2C3937366%2C668906%2C3937374%2C668904%2C3937345%2C668903%2C3937392%2C3520490%2C3540012%2C3596061%2C3936294%2C3958946%2C3801462&version_name=8.7.6&device_brand=Xiaomi&scm_build_version=1.0.0.1639&ssmix=a&plugin_state=139681997156381&device_platform=android&polaris_version=1.0.5&aid=35&_request_from=web&rom_version=miui_v11_v11.0.25.0.qjbcnxm&luckydog_base=L-Qs4_NsyjW98aRJyI10ipWoEeB-zVYalDVrBOR55JJJyBu7V-9t6Rs65lEoO76T9pCEaZGTk_UQ8-SlGi9Na2iUbjhGH0cr7OZ6daTUYfAcMYIOpPhMIu9ay8WRbqfbr2oFVkvds-OmN7UIdy6xg8rOAE0h1Fv_ojfvKzYSWYA&luckydog_data=pLpRmOMroS6Yruu34epx1q95m9AFI3O76Gq2bItg2GeD7Udv6q-5GvE9whReXRAXP0RKgjXP2Fh8jQ_4HPFFcw&luckydog_token=Rc0YYEWhEl8eoCsTBMtn7x6M-06xtV_twh3G1M8zEfPqRlfkgtsZViHX0EjkfO43kfw2p-yZHUiAkETbul6RlA&luckydog_sdk_version=5.0.1-rc.11&luckydog_settings_version=15&luckycat_version_name=5.0.1-rc.24&luckycat_version_code=501024`
+    let url = `${hostname}/luckycat/lite/v1/walk/bonus/?manifest_version_code=8760&_rticket=1650401046423&sa_enable=0&act_token=6RG20vMLG99kWgP4-JPCXjH4d2MoJtxqis-UJMfVBauCrF2w7u9fyclvyNrcLtUok76I1X_av6M7TzAlj3xQew&iid=1341841701869182&channel=lite_xiaomi_64&isTTWebView=1&device_type=Mi+10&language=zh&host_abi=arm64-v8a&ab_client=a1%2Ce1%2Cf2%2Cg2%2Cf7&resolution=1080*2120&cookie_base=xxv-DM4hSZjeBbwTMG4VpEd-s8y5trhdfc9QuvXd6l-cIxOfIuAtilLYgN0_tHLBvc4HaNuqTOKX2XOA1Me9lf0C88iRwXX3h6i3vk_Udsg&is_pad=0&update_version_code=87610&dq_param=1&status_bar_height=32&cdid=027d4278-d6cf-4217-974b-2647a9791411&ab_group=z2&os_api=29&abflag=3&dpi=440&ab_feature=z1&cookie_data=K-5O5M5eqoUHPRzT_jWTmw&ac=wifi&act_hash=dedbaf4265335985d5667d77ca98f8d9&device_id=720870999070232&os=android&pass_through=default&os_version=10&version_code=876&session_id=e8b69790-39a5-4d40-b025-ba130ae370d2&tma_jssdk_version=2.8.0.16&app_name=news_article_lite&ab_version=668907%2C3937398%2C1859937%2C668908%2C3937402%2C668905%2C3937366%2C668906%2C3937374%2C668904%2C3937345%2C668903%2C3937392%2C3520490%2C3540012%2C3596061%2C3936294%2C3958946%2C3801462&version_name=8.7.6&device_brand=Xiaomi&scm_build_version=1.0.0.1639&ssmix=a&plugin_state=139681997156381&device_platform=android&polaris_version=1.0.5&aid=35&_request_from=web&rom_version=miui_v11_v11.0.25.0.qjbcnxm&luckydog_base=L-Qs4_NsyjW98aRJyI10ipWoEeB-zVYalDVrBOR55JJJyBu7V-9t6Rs65lEoO76T9pCEaZGTk_UQ8-SlGi9Na2iUbjhGH0cr7OZ6daTUYfAcMYIOpPhMIu9ay8WRbqfbr2oFVkvds-OmN7UIdy6xg8rOAE0h1Fv_ojfvKzYSWYA&luckydog_data=pLpRmOMroS6Yruu34epx1q95m9AFI3O76Gq2bItg2GeD7Udv6q-5GvE9whReXRAXP0RKgjXP2Fh8jQ_4HPFFcw&luckydog_token=Rc0YYEWhEl8eoCsTBMtn7x6M-06xtV_twh3G1M8zEfPqRlfkgtsZViHX0EjkfO43kfw2p-yZHUiAkETbul6RlA&luckydog_sdk_version=5.0.1-rc.11&luckydog_settings_version=15&luckycat_version_name=5.0.1-rc.24&luckycat_version_code=501024`
     let body = `{"task_id":136,"enable_preload_exciting_video":0,"client_time":${nowtime},"rit":"","use_ecpm":0}`
     let urlObject = populatePostUrl(url,body)
     await httpPost(urlObject,caller)
@@ -477,7 +477,7 @@ async function GetWalkBonus() {
 //吃饭补贴
 async function DoneEat() {
     let caller = printCaller()
-    let url = `https://api3-normal-lf.toutiaoapi.com/luckycat/lite/v1/eat/done_eat/?sa_enable=0&act_token=6RG20vMLG99kWgP4-JPCXjH4d2MoJtxqis-UJMfVBauCrF2w7u9fyclvyNrcLtUok76I1X_av6M7TzAlj3xQew&channel=lite_xiaomi_64&device_type=Mi+10&language=zh&ab_client=a1%2Ce1%2Cf2%2Cg2%2Cf7&resolution=1080*2120&cookie_base=xxv-DM4hSZjeBbwTMG4VpEd-s8y5trhdfc9QuvXd6l-cIxOfIuAtilLYgN0_tHLBvc4HaNuqTOKX2XOA1Me9lf0C88iRwXX3h6i3vk_Udsg&update_version_code=87610&cdid=027d4278-d6cf-4217-974b-2647a9791411&ab_group=z2&abflag=3&rit=coin&ac=wifi&act_hash=dedbaf4265335985d5667d77ca98f8d9&device_id=720870999070232&version_code=876&ab_version=668907%2C3937398%2C1859937%2C668908%2C3937402%2C668905%2C3937366%2C668906%2C3937374%2C668904%2C3937345%2C668903%2C3937392%2C3520490%2C3540012%2C3596061%2C3936294%2C3958946%2C3801462&scm_build_version=1.0.0.1639&plugin_state=139681997156381&device_platform=android&aid=35&rom_version=miui_v11_v11.0.25.0.qjbcnxm&manifest_version_code=8760&_rticket=1650402088312&iid=1341841701869182&isTTWebView=1&use_ecpm=0&host_abi=arm64-v8a&is_pad=0&dq_param=1&status_bar_height=32&os_api=29&dpi=440&ab_feature=z1&cookie_data=K-5O5M5eqoUHPRzT_jWTmw&os=android&pass_through=default&os_version=10&session_id=7b5f112a-e1d5-45e8-81de-fc04ac51e476&tma_jssdk_version=2.8.0.16&app_name=news_article_lite&version_name=8.7.6&device_brand=Xiaomi&ssmix=a&polaris_version=1.0.5&_request_from=web&luckydog_base=zEN9QCnx8bXqQPwrxQYlouK9T33yztCGBlg4kp3VEuZF061lMOdSAqGZRqThMb2u1cOL5EGQ90DbVUR0iV1s0bP8A_mQVSPVF73e5n5SBPjXSwOGPOzwLSN_fjmOJeH95lmALsNFPLRERf2CcewheG8Sj1fqDVRlX1Rifoq-lho&luckydog_data=Hk5Bf0ttsSfIY4UFRdE55re_uPKSgNmXs9V7p2wz6X7wZDsqUuI9hPaiZNOHQho6dCZ14pQnbEjqqbULoU6k6g&luckydog_token=Rc0YYEWhEl8eoCsTBMtn7x6M-06xtV_twh3G1M8zEfPqRlfkgtsZViHX0EjkfO43kfw2p-yZHUiAkETbul6RlA&luckydog_sdk_version=5.0.1-rc.11&luckydog_settings_version=15&luckycat_version_name=5.0.1-rc.24&luckycat_version_code=501024`
+    let url = `${hostname}/luckycat/lite/v1/eat/done_eat/?sa_enable=0&act_token=6RG20vMLG99kWgP4-JPCXjH4d2MoJtxqis-UJMfVBauCrF2w7u9fyclvyNrcLtUok76I1X_av6M7TzAlj3xQew&channel=lite_xiaomi_64&device_type=Mi+10&language=zh&ab_client=a1%2Ce1%2Cf2%2Cg2%2Cf7&resolution=1080*2120&cookie_base=xxv-DM4hSZjeBbwTMG4VpEd-s8y5trhdfc9QuvXd6l-cIxOfIuAtilLYgN0_tHLBvc4HaNuqTOKX2XOA1Me9lf0C88iRwXX3h6i3vk_Udsg&update_version_code=87610&cdid=027d4278-d6cf-4217-974b-2647a9791411&ab_group=z2&abflag=3&rit=coin&ac=wifi&act_hash=dedbaf4265335985d5667d77ca98f8d9&device_id=720870999070232&version_code=876&ab_version=668907%2C3937398%2C1859937%2C668908%2C3937402%2C668905%2C3937366%2C668906%2C3937374%2C668904%2C3937345%2C668903%2C3937392%2C3520490%2C3540012%2C3596061%2C3936294%2C3958946%2C3801462&scm_build_version=1.0.0.1639&plugin_state=139681997156381&device_platform=android&aid=35&rom_version=miui_v11_v11.0.25.0.qjbcnxm&manifest_version_code=8760&_rticket=1650402088312&iid=1341841701869182&isTTWebView=1&use_ecpm=0&host_abi=arm64-v8a&is_pad=0&dq_param=1&status_bar_height=32&os_api=29&dpi=440&ab_feature=z1&cookie_data=K-5O5M5eqoUHPRzT_jWTmw&os=android&pass_through=default&os_version=10&session_id=7b5f112a-e1d5-45e8-81de-fc04ac51e476&tma_jssdk_version=2.8.0.16&app_name=news_article_lite&version_name=8.7.6&device_brand=Xiaomi&ssmix=a&polaris_version=1.0.5&_request_from=web&luckydog_base=zEN9QCnx8bXqQPwrxQYlouK9T33yztCGBlg4kp3VEuZF061lMOdSAqGZRqThMb2u1cOL5EGQ90DbVUR0iV1s0bP8A_mQVSPVF73e5n5SBPjXSwOGPOzwLSN_fjmOJeH95lmALsNFPLRERf2CcewheG8Sj1fqDVRlX1Rifoq-lho&luckydog_data=Hk5Bf0ttsSfIY4UFRdE55re_uPKSgNmXs9V7p2wz6X7wZDsqUuI9hPaiZNOHQho6dCZ14pQnbEjqqbULoU6k6g&luckydog_token=Rc0YYEWhEl8eoCsTBMtn7x6M-06xtV_twh3G1M8zEfPqRlfkgtsZViHX0EjkfO43kfw2p-yZHUiAkETbul6RlA&luckydog_sdk_version=5.0.1-rc.11&luckydog_settings_version=15&luckycat_version_name=5.0.1-rc.24&luckycat_version_code=501024`
     let urlObject = populatePostUrl(url)
     await httpPost(urlObject,caller)
     let result = httpResult;
@@ -495,7 +495,7 @@ async function QuerySleepStatus() {
     let caller = printCaller()
     let curTime = new Date()
     let curHour = curTime.getHours()
-    let url = `https://api3-normal-lf.toutiaoapi.com/luckycat/lite/v1/sleep/status/?_request_from=web&scm_build_version=1.0.0.1639&sa_enable=0&act_token=6RG20vMLG99kWgP4-JPCXjH4d2MoJtxqis-UJMfVBauCrF2w7u9fyclvyNrcLtUok76I1X_av6M7TzAlj3xQew&channel=lite_xiaomi_64&luckycat_version_code=501024&device_type=Mi+10&language=zh&ab_client=a1%2Ce1%2Cf2%2Cg2%2Cf7&resolution=1080*2120&cookie_base=xxv-DM4hSZjeBbwTMG4VpEd-s8y5trhdfc9QuvXd6l-cIxOfIuAtilLYgN0_tHLBvc4HaNuqTOKX2XOA1Me9lf0C88iRwXX3h6i3vk_Udsg&update_version_code=87610&cdid=027d4278-d6cf-4217-974b-2647a9791411&ab_group=z2&abflag=3&ac=wifi&act_hash=dedbaf4265335985d5667d77ca98f8d9&device_id=720870999070232&version_code=876&ab_version=668907%2C3937398%2C1859937%2C668908%2C3937402%2C668905%2C3937366%2C668906%2C3937374%2C668904%2C3937345%2C668903%2C3937392%2C3520490%2C3540012%2C3596061%2C3936294%2C3958946%2C3801462&luckydog_base=zEN9QCnx8bXqQPwrxQYlouK9T33yztCGBlg4kp3VEuZF061lMOdSAqGZRqThMb2u1cOL5EGQ90DbVUR0iV1s0bP8A_mQVSPVF73e5n5SBPjXSwOGPOzwLSN_fjmOJeH95lmALsNFPLRERf2CcewheG8Sj1fqDVRlX1Rifoq-lho&plugin_state=139681997156381&device_platform=android&aid=35&rom_version=miui_v11_v11.0.25.0.qjbcnxm&manifest_version_code=8760&_rticket=1650401482394&iid=1341841701869182&isTTWebView=1&host_abi=arm64-v8a&is_pad=0&dq_param=1&status_bar_height=32&os_api=29&dpi=440&luckydog_data=Hk5Bf0ttsSfIY4UFRdE55re_uPKSgNmXs9V7p2wz6X7wZDsqUuI9hPaiZNOHQho6dCZ14pQnbEjqqbULoU6k6g&ab_feature=z1&cookie_data=K-5O5M5eqoUHPRzT_jWTmw&os=android&pass_through=default&os_version=10&session_id=d6439df1-6188-410a-9cee-3bd6fbb43e76&luckydog_token=Rc0YYEWhEl8eoCsTBMtn7x6M-06xtV_twh3G1M8zEfPqRlfkgtsZViHX0EjkfO43kfw2p-yZHUiAkETbul6RlA&tma_jssdk_version=2.8.0.16&app_name=news_article_lite&luckycat_version_name=5.0.1-rc.24&version_name=8.7.6&device_brand=Xiaomi&ssmix=a&luckydog_settings_version=15&luckydog_sdk_version=5.0.1-rc.11`
+    let url = `${hostname}/luckycat/lite/v1/sleep/status/?_request_from=web&scm_build_version=1.0.0.1639&sa_enable=0&act_token=6RG20vMLG99kWgP4-JPCXjH4d2MoJtxqis-UJMfVBauCrF2w7u9fyclvyNrcLtUok76I1X_av6M7TzAlj3xQew&channel=lite_xiaomi_64&luckycat_version_code=501024&device_type=Mi+10&language=zh&ab_client=a1%2Ce1%2Cf2%2Cg2%2Cf7&resolution=1080*2120&cookie_base=xxv-DM4hSZjeBbwTMG4VpEd-s8y5trhdfc9QuvXd6l-cIxOfIuAtilLYgN0_tHLBvc4HaNuqTOKX2XOA1Me9lf0C88iRwXX3h6i3vk_Udsg&update_version_code=87610&cdid=027d4278-d6cf-4217-974b-2647a9791411&ab_group=z2&abflag=3&ac=wifi&act_hash=dedbaf4265335985d5667d77ca98f8d9&device_id=720870999070232&version_code=876&ab_version=668906%2C3937374%2C668904%2C3937345%2C668903%2C3937392%2C668907%2C3937398%2C1859937%2C668908%2C3937402%2C668905%2C3937366%2C3801462%2C3520490%2C3540012%2C3596061%2C3958946&luckydog_base=qG0Sn8Nue65F3MxBkjB-EW7ni81H0J7NsN9QTN3x8FPllOV7mkXvfYtRAsDKMsI4WxPjyb44eb4iLTTLbXOAUohY2Zv9dI1QXtS79j_GdEBHSVv8mxCtG-mD_aUrc7Ftfw0v7Gu4lt7gnQ1BIw_42k3F1E60Q8jD7LGzqHWDFvs&plugin_state=139681997156381&device_platform=android&aid=35&rom_version=miui_v11_v11.0.25.0.qjbcnxm&manifest_version_code=8760&_rticket=1650476865665&iid=1341841701869182&isTTWebView=1&host_abi=arm64-v8a&is_pad=0&dq_param=1&status_bar_height=32&os_api=29&dpi=440&luckydog_data=H_tviv5pCkhGYVzM3xlqO-Udh13I_v0l41nYVB9-BphzihqsXlF_Yilb89peZOinnXtS62jAYvu2gmlGWJjS6_Wg621ASMl_2tcKLhns2aw&ab_feature=z1&cookie_data=K-5O5M5eqoUHPRzT_jWTmw&os=android&pass_through=default&os_version=10&session_id=d3474e9f-5a53-42a7-8023-a4756ffff44b&luckydog_token=Rc0YYEWhEl8eoCsTBMtn7x6M-06xtV_twh3G1M8zEfPqRlfkgtsZViHX0EjkfO43kfw2p-yZHUiAkETbul6RlA&tma_jssdk_version=2.8.0.16&app_name=news_article_lite&luckycat_version_name=5.0.1-rc.24&version_name=8.7.6&device_brand=Xiaomi&ssmix=a&luckydog_settings_version=15&luckydog_sdk_version=5.0.1-rc.11`
     let urlObject = populateGetUrl(url)
     await httpGet(urlObject,caller)
     let result = httpResult;
@@ -541,7 +541,7 @@ async function QuerySleepStatus() {
 //睡觉醒来
 async function SleepStop() {
     let caller = printCaller()
-    let url = `${hostname}/luckycat/lite/v1/sleep/stop/?aid=35`
+    let url = `${hostname}/luckycat/lite/v1/sleep/stop/?manifest_version_code=8760&_rticket=1650407780276&sa_enable=0&act_token=6RG20vMLG99kWgP4-JPCXjH4d2MoJtxqis-UJMfVBauCrF2w7u9fyclvyNrcLtUok76I1X_av6M7TzAlj3xQew&iid=1341841701869182&channel=lite_xiaomi_64&isTTWebView=1&device_type=Mi+10&language=zh&host_abi=arm64-v8a&ab_client=a1%2Ce1%2Cf2%2Cg2%2Cf7&resolution=1080*2120&cookie_base=xxv-DM4hSZjeBbwTMG4VpEd-s8y5trhdfc9QuvXd6l-cIxOfIuAtilLYgN0_tHLBvc4HaNuqTOKX2XOA1Me9lf0C88iRwXX3h6i3vk_Udsg&is_pad=0&update_version_code=87610&dq_param=1&status_bar_height=32&cdid=027d4278-d6cf-4217-974b-2647a9791411&ab_group=z2&os_api=29&abflag=3&dpi=440&ab_feature=z1&cookie_data=K-5O5M5eqoUHPRzT_jWTmw&ac=wifi&act_hash=dedbaf4265335985d5667d77ca98f8d9&device_id=720870999070232&os=android&pass_through=default&os_version=10&version_code=876&session_id=aaec0b40-9584-43d8-aec5-4f8d732c42e4&tma_jssdk_version=2.8.0.16&app_name=news_article_lite&ab_version=1859937%2C668908%2C3937402%2C668905%2C3937366%2C668906%2C3937374%2C668904%2C3937345%2C668903%2C3937392%2C668907%2C3937398%2C3801462%2C3520490%2C3540012%2C3596061%2C3936294%2C3958946&version_name=8.7.6&device_brand=Xiaomi&scm_build_version=1.0.0.1639&ssmix=a&plugin_state=139681997156381&device_platform=android&polaris_version=1.0.5&aid=35&_request_from=web&rom_version=miui_v11_v11.0.25.0.qjbcnxm&luckydog_base=qG0Sn8Nue65F3MxBkjB-EW7ni81H0J7NsN9QTN3x8FPllOV7mkXvfYtRAsDKMsI4WxPjyb44eb4iLTTLbXOAUohY2Zv9dI1QXtS79j_GdEBHSVv8mxCtG-mD_aUrc7Ftfw0v7Gu4lt7gnQ1BIw_42k3F1E60Q8jD7LGzqHWDFvs&luckydog_data=H_tviv5pCkhGYVzM3xlqO-Udh13I_v0l41nYVB9-BphzihqsXlF_Yilb89peZOinnXtS62jAYvu2gmlGWJjS6_Wg621ASMl_2tcKLhns2aw&luckydog_token=Rc0YYEWhEl8eoCsTBMtn7x6M-06xtV_twh3G1M8zEfPqRlfkgtsZViHX0EjkfO43kfw2p-yZHUiAkETbul6RlA&luckydog_sdk_version=5.0.1-rc.11&luckydog_settings_version=15&luckycat_version_name=5.0.1-rc.24&luckycat_version_code=501024`
     let urlObject = populatePostUrl(url)
     await httpPost(urlObject,caller)
     let result = httpResult;
@@ -560,7 +560,7 @@ async function SleepStop() {
 async function SleepDone(amount) {
     let caller = printCaller()
     let timeInMS = Math.round(new Date().getTime())
-    let url = `${hostname}/luckycat/lite/v1/sleep/done_task/?os_api=25&device_type=VOG-AL10&ssmix=a&manifest_version_code=8280&dpi=240&abflag=3&pass_through=default&use_ecpm=0&rom_version=25&rit=coin&app_name=news_article_lite&ab_client=a1%2Ce1%2Cf2%2Cg2%2Cf7&version_name=8.2.8&ab_version=668903%2C3491704%2C1859936%2C668908%2C3491714%2C668907%2C3491710%2C668905%2C3491678%2C668906%2C3491686%2C668904%2C3491669%2C3269751%2C3472846%2C3493942&plugin_state=7731332411413&sa_enable=0&ac=wifi&_request_from=web&update_version_code=82809&channel=lite2_tengxun&_rticket=${timeInMS}&status_bar_height=24&dq_param=0&device_platform=android&iid=1592553870724568&scm_build_version=1.0.0.1454&mac_address=88%3AB1%3A11%3A61%3A96%3A7B&version_code=828&polaris_version=1.0.5&tma_jssdk_version=1.95.0.28&is_pad=1&resolution=720*1280&os_version=7.1.2&language=zh&device_brand=HUAWEI&aid=35&ab_feature=z1&luckycat_version_name=4.2.0-rc.5&luckycat_version_code=420005`
+    let url = `${hostname}/luckycat/lite/v1/sleep/done_task/?sa_enable=0&act_token=6RG20vMLG99kWgP4-JPCXjH4d2MoJtxqis-UJMfVBauCrF2w7u9fyclvyNrcLtUok76I1X_av6M7TzAlj3xQew&channel=lite_xiaomi_64&device_type=Mi+10&language=zh&ab_client=a1%2Ce1%2Cf2%2Cg2%2Cf7&resolution=1080*2120&cookie_base=xxv-DM4hSZjeBbwTMG4VpEd-s8y5trhdfc9QuvXd6l-cIxOfIuAtilLYgN0_tHLBvc4HaNuqTOKX2XOA1Me9lf0C88iRwXX3h6i3vk_Udsg&update_version_code=87610&cdid=027d4278-d6cf-4217-974b-2647a9791411&ab_group=z2&abflag=3&rit=coin&ac=wifi&act_hash=dedbaf4265335985d5667d77ca98f8d9&device_id=720870999070232&version_code=876&ab_version=1859937%2C668908%2C3937402%2C668905%2C3937366%2C668906%2C3937374%2C668904%2C3937345%2C668903%2C3937392%2C668907%2C3937398%2C3801462%2C3520490%2C3540012%2C3596061%2C3936294%2C3958946&scm_build_version=1.0.0.1639&plugin_state=139681997156381&device_platform=android&aid=35&rom_version=miui_v11_v11.0.25.0.qjbcnxm&manifest_version_code=8760&_rticket=1650407871521&iid=1341841701869182&isTTWebView=1&use_ecpm=0&host_abi=arm64-v8a&is_pad=0&dq_param=1&status_bar_height=32&os_api=29&dpi=440&ab_feature=z1&cookie_data=K-5O5M5eqoUHPRzT_jWTmw&os=android&pass_through=default&os_version=10&session_id=7ea4245a-c604-40e3-ad9b-283a6b4007a0&tma_jssdk_version=2.8.0.16&app_name=news_article_lite&version_name=8.7.6&device_brand=Xiaomi&ssmix=a&polaris_version=1.0.5&_request_from=web&luckydog_base=qG0Sn8Nue65F3MxBkjB-EW7ni81H0J7NsN9QTN3x8FPllOV7mkXvfYtRAsDKMsI4WxPjyb44eb4iLTTLbXOAUohY2Zv9dI1QXtS79j_GdEBHSVv8mxCtG-mD_aUrc7Ftfw0v7Gu4lt7gnQ1BIw_42k3F1E60Q8jD7LGzqHWDFvs&luckydog_data=H_tviv5pCkhGYVzM3xlqO-Udh13I_v0l41nYVB9-BphzihqsXlF_Yilb89peZOinnXtS62jAYvu2gmlGWJjS6_Wg621ASMl_2tcKLhns2aw&luckydog_token=Rc0YYEWhEl8eoCsTBMtn7x6M-06xtV_twh3G1M8zEfPqRlfkgtsZViHX0EjkfO43kfw2p-yZHUiAkETbul6RlA&luckydog_sdk_version=5.0.1-rc.11&luckydog_settings_version=15&luckycat_version_name=5.0.1-rc.24&luckycat_version_code=501024`
     let body = `{"score_amount":${amount},"enable_preload_exciting_video":0}`
     let urlObject = populatePostUrl(url,body)
     await httpPost(urlObject,caller)
@@ -594,7 +594,7 @@ async function SleepStart() {
 //查询农场状态
 async function QueryFarmInfo() {
     let caller = printCaller()
-    let url = `${hostname}/ttgame/game_farm/polling_info?aid=35&update_version_code=87610&device_platform=android&&device_type=Mi+10`
+    let url = `${hostname}/ttgame/game_farm/polling_info?game_client_version_code=2&device_id=720870999070232&device_platform=android&aid=35&os_version=10&update_version_code=87610&tma_jssdk_version=2.31.1.1&sid&version_code=876&install_id=1341841701869182&app_name=news_article_lite&device_type=Mi+10&channel=lite_xiaomi_64&host_app_name=undefined&activity_id&credit_type&use_tomato=0&ios_new_version=false&SDKVersion=2.31.1&deviceScore=%5Bobject+Object%5D`
     let urlObject = populateGetUrl(url)
     await httpGet(urlObject,caller)
     let result = httpResult;
@@ -618,7 +618,7 @@ async function QueryFarmInfo() {
 //进入农场
 async function EnterFarm() {
     let caller = printCaller()
-    let url = `${hostname}/ttgame/game_farm/home_info?aid=35&update_version_code=87610&device_platform=android&&device_type=Mi+10`
+    let url = `${hostname}/ttgame/game_farm/home_info?game_client_version_code=2&device_id=720870999070232&device_platform=android&aid=35&os_version=10&update_version_code=87610&tma_jssdk_version=2.31.1.1&sid&version_code=876&install_id=1341841701869182&app_name=news_article_lite&device_type=Mi+10&channel=lite_xiaomi_64&host_app_name=undefined&activity_id&credit_type&use_tomato=0&ios_new_version=false&SDKVersion=2.31.1&deviceScore=%5Bobject+Object%5D`
     let urlObject = populateGetUrl(url)
     await httpGet(urlObject,caller)
     let result = httpResult;
@@ -634,7 +634,7 @@ async function EnterFarm() {
 //农场-离线奖励翻倍
 async function FarmOfflineDouble() {
     let caller = printCaller()
-    let url = `${hostname}/ttgame/game_farm/double_reward?watch_ad=1&aid=35`
+    let url = `${hostname}/ttgame/game_farm/double_reward?game_client_version_code=2&watch_ad=1&device_id=720870999070232&device_platform=android&aid=35&os_version=10&update_version_code=87610&tma_jssdk_version=2.31.1.1&sid&version_code=876&install_id=1341841701869182&app_name=news_article_lite&device_type=Mi+10&channel=lite_xiaomi_64&host_app_name=undefined&activity_id&credit_type&use_tomato=0&ios_new_version=false&SDKVersion=2.31.1&deviceScore=%5Bobject+Object%5D`
     let urlObject = populateGetUrl(url)
     await httpGet(urlObject,caller)
     let result = httpResult;
@@ -666,7 +666,7 @@ async function RewardFarmThreeGift(gift_id) {
 //农场-三餐礼包状态
 async function QueryFarmThreeGift() {
     let caller = printCaller()
-    let url = `${hostname}/ttgame/game_farm/gift/list?aid=35&update_version_code=87610&device_platform=android&&device_type=Mi+10`
+    let url = `${hostname}/ttgame/game_farm/gift/list?game_client_version_code=2&device_id=720870999070232&device_platform=android&aid=35&os_version=10&update_version_code=87610&tma_jssdk_version=2.31.1.1&sid&version_code=876&install_id=1341841701869182&app_name=news_article_lite&device_type=Mi+10&channel=lite_xiaomi_64&host_app_name=undefined&activity_id&credit_type&use_tomato=0&ios_new_version=false&SDKVersion=2.31.1&deviceScore=%5Bobject+Object%5D`
     let urlObject = populateGetUrl(url)
     await httpGet(urlObject,caller)
     let result = httpResult;
@@ -686,7 +686,7 @@ async function QueryFarmThreeGift() {
 //查询农场任务列表
 async function QueryFarmTask() {
     let caller = printCaller()
-    let url = `${hostname}/ttgame/game_farm/daily_task/list?aid=35&update_version_code=87610&device_platform=android&&device_type=Mi+10`
+    let url = `${hostname}/ttgame/game_farm/daily_task/list?game_client_version_code=2&device_id=720870999070232&device_platform=android&aid=35&os_version=10&update_version_code=87610&tma_jssdk_version=2.31.1.1&sid&version_code=876&install_id=1341841701869182&app_name=news_article_lite&device_type=Mi+10&channel=lite_xiaomi_64&host_app_name=undefined&activity_id&credit_type&use_tomato=0&ios_new_version=false&SDKVersion=2.31.1&deviceScore=%5Bobject+Object%5D`
     let urlObject = populateGetUrl(url)
     await httpGet(urlObject,caller)
     let result = httpResult;
@@ -706,7 +706,7 @@ async function QueryFarmTask() {
 //农场-领取任务奖励
 async function RewardFarmTask(id) {
     let caller = printCaller()
-    let url = `${hostname}/ttgame/game_farm/reward/task?task_id=${id}&aid=35`
+    let url = `${hostname}/ttgame/game_farm/reward/task?game_client_version_code=2&task_id=${task_id}&is_auto_reward=0&is_surprise_box_reward=0&device_id=720870999070232&device_platform=android&aid=35&os_version=10&update_version_code=87610&tma_jssdk_version=2.31.1.1&sid&version_code=876&install_id=1341841701869182&app_name=news_article_lite&device_type=Mi+10&channel=lite_xiaomi_64&host_app_name=undefined&activity_id&credit_type&use_tomato=0&ios_new_version=false&SDKVersion=2.31.1&deviceScore=%5Bobject+Object%5D`
     let urlObject = populateGetUrl(url)
     await httpGet(urlObject,caller)
     let result = httpResult;
@@ -723,7 +723,7 @@ async function RewardFarmTask(id) {
 //农场-浇水
 async function FarmWater() {
     let caller = printCaller()
-    let url = `${hostname}/ttgame/game_farm/land_water?aid=35&update_version_code=87610&device_platform=android&&device_type=Mi+10`
+    let url = `${hostname}/ttgame/game_farm/land_water?game_client_version_code=2&tentimes=0&fivetimes=0&device_id=720870999070232&device_platform=android&aid=35&os_version=10&update_version_code=87610&tma_jssdk_version=2.31.1.1&sid&version_code=876&install_id=1341841701869182&app_name=news_article_lite&device_type=Mi+10&channel=lite_xiaomi_64&host_app_name=undefined&activity_id&credit_type&use_tomato=0&ios_new_version=false&SDKVersion=2.31.1&deviceScore=%5Bobject+Object%5D`
     let urlObject = populateGetUrl(url)
     await httpGet(urlObject,caller)
     let result = httpResult;
@@ -743,7 +743,7 @@ async function FarmWater() {
 //农场-开宝箱
 async function FarmOpenBox() {
     let caller = printCaller()
-    let url = `${hostname}/ttgame/game_farm/box/open?aid=35&update_version_code=87610&device_platform=android&&device_type=Mi+10`
+    let url = `${hostname}/ttgame/game_farm/box/open?game_client_version_code=2&enter_type=101009&device_id=720870999070232&device_platform=android&aid=35&os_version=10&update_version_code=87610&tma_jssdk_version=2.31.1.1&sid&version_code=876&install_id=1341841701869182&app_name=news_article_lite&device_type=Mi+10&channel=lite_xiaomi_64&host_app_name=undefined&activity_id&credit_type&use_tomato=0&ios_new_version=false&SDKVersion=2.31.1&deviceScore=%5Bobject+Object%5D`
     let urlObject = populateGetUrl(url)
     await httpGet(urlObject,caller)
     let result = httpResult;
@@ -760,7 +760,7 @@ async function FarmOpenBox() {
 //农场-宝箱视频
 async function FarmOpenBoxVideo() {
     let caller = printCaller()
-    let url = `${hostname}/ttgame/game_farm/excitation_ad/add?excitation_ad_score_amount=134&device_id=2392172203611735&aid=35&os_version=10&update_version_code=87610`
+    let url = `${hostname}/ttgame/game_farm/excitation_ad/add?game_client_version_code=2&excitation_ad_score_amount=134&device_id=720870999070232&device_platform=android&aid=35&os_version=10&update_version_code=87610&tma_jssdk_version=2.31.1.1&sid&version_code=876&install_id=1341841701869182&app_name=news_article_lite&device_type=Mi+10&channel=lite_xiaomi_64&host_app_name=undefined&activity_id&credit_type&use_tomato=0&ios_new_version=false&SDKVersion=2.31.1&deviceScore=%5Bobject+Object%5D`
     let urlObject = populateGetUrl(url)
     await httpGet(urlObject,caller)
     let result = httpResult;
@@ -776,7 +776,7 @@ async function FarmOpenBoxVideo() {
 //农场-签到状态
 async function QueryFarmSignStatus() {
     let caller = printCaller()
-    let url = `${hostname}/ttgame/game_farm/sign_in/list?aid=35&update_version_code=87610&device_platform=android&&device_type=Mi+10`
+    let url = `${hostname}/ttgame/game_farm/sign_in/list?game_client_version_code=2&device_id=720870999070232&device_platform=android&aid=35&os_version=10&update_version_code=87610&tma_jssdk_version=2.31.1.1&sid&version_code=876&install_id=1341841701869182&app_name=news_article_lite&device_type=Mi+10&channel=lite_xiaomi_64&host_app_name=undefined&activity_id&credit_type&use_tomato=0&ios_new_version=false&SDKVersion=2.31.1&deviceScore=%5Bobject+Object%5D`
     let urlObject = populateGetUrl(url)
     await httpGet(urlObject,caller)
     let result = httpResult;
@@ -797,7 +797,7 @@ async function QueryFarmSignStatus() {
 //农场-签到
 async function FarmSign() {
     let caller = printCaller()
-    let url = `${hostname}/ttgame/game_farm/reward/sign_in?aid=35&update_version_code=87610&device_platform=android&&device_type=Mi+10`
+    let url = `${hostname}/ttgame/game_farm/reward/sign_in?game_client_version_code=2&watch_ad=0&extra_ads_num=0&device_id=720870999070232&device_platform=android&aid=35&os_version=10&update_version_code=87610&tma_jssdk_version=2.31.1.1&sid&version_code=876&install_id=1341841701869182&app_name=news_article_lite&device_type=Mi+10&channel=lite_xiaomi_64&host_app_name=undefined&activity_id&credit_type&use_tomato=0&ios_new_version=false&SDKVersion=2.31.1&deviceScore=%5Bobject+Object%5D`
     let urlObject = populateGetUrl(url)
     await httpGet(urlObject,caller)
     let result = httpResult;
@@ -814,7 +814,7 @@ async function FarmSign() {
 //农场-签到视频翻倍
 async function FarmSignDouble() {
     let caller = printCaller()
-    let url = `${hostname}/ttgame/game_farm/reward/double_sign_in?aid=35&update_version_code=87610&device_platform=android&&device_type=Mi+10`
+    let url = `${hostname}/ttgame/game_farm/reward/double_sign_in?game_client_version_code=2&watch_ad=0&extra_ads_num=2&device_id=720870999070232&device_platform=android&aid=35&os_version=10&update_version_code=87610&tma_jssdk_version=2.31.1.1&sid&version_code=876&install_id=1341841701869182&app_name=news_article_lite&device_type=Mi+10&channel=lite_xiaomi_64&host_app_name=undefined&activity_id&credit_type&use_tomato=0&ios_new_version=false&SDKVersion=2.31.1&deviceScore=%5Bobject+Object%5D`
     let urlObject = populateGetUrl(url)
     await httpGet(urlObject,caller)
     let result = httpResult;
@@ -831,7 +831,7 @@ async function FarmSignDouble() {
 //农场-土地状态
 async function QueryFarmLandStatus() {
     let caller = printCaller()
-    let url = `${hostname}/ttgame/game_farm/home_info?aid=35&update_version_code=87610&device_platform=android&&device_type=Mi+10`
+    let url = `${hostname}/ttgame/game_farm/home_info?game_client_version_code=2&device_id=720870999070232&device_platform=android&aid=35&os_version=10&update_version_code=87610&tma_jssdk_version=2.31.1.1&sid&version_code=876&install_id=1341841701869182&app_name=news_article_lite&device_type=Mi+10&channel=lite_xiaomi_64&host_app_name=undefined&activity_id&credit_type&use_tomato=0&ios_new_version=false&SDKVersion=2.31.1&deviceScore=%5Bobject+Object%5D`
     let urlObject = populateGetUrl(url)
     await httpGet(urlObject,caller)
     let result = httpResult;
@@ -852,7 +852,7 @@ async function QueryFarmLandStatus() {
 //农场-土地解锁
 async function FarmUnlock(land_id) {
     let caller = printCaller()
-    let url = `${hostname}/ttgame/game_farm/land/unlock?land_id=${land_id}&aid=35&update_version_code=87610&device_platform=android&&device_type=Mi+10`
+    let url = ``
     let urlObject = populateGetUrl(url)
     await httpGet(urlObject,caller)
     let result = httpResult;
@@ -958,7 +958,7 @@ async function TreeChallengeReward() {
 //种树-化肥签到
 async function TreeNutrientSign() {
     let caller = printCaller()
-    let url = `${hostname}/ttgame/game_orchard/nutrient/sign_in?aid=35&update_version_code=87610&device_platform=android&&device_type=Mi+10`
+    let url = `${hostname}/ttgame/game_orchard/nutrient/sign_in?os_version=10&version_code=876&device_id=720870999070232&iid=1341841701869182&app_name=news_article_lite&device_platform=android&device_type=Mi+10&channel=lite_xiaomi_64&aid=35&version_name=8.7.6&update_version_code=87610`
     let urlObject = populateGetUrl(url)
     await httpGet(urlObject,caller)
     let result = httpResult;
@@ -996,7 +996,7 @@ async function QueryTreeThreeGift() {
     let caller = printCaller()
     let curTime = new Date()
     let curHour = curTime.getHours()
-    let url = `${hostname}/ttgame/game_orchard/three_gift/list?aid=35&update_version_code=87610&device_platform=android&&device_type=Mi+10`
+    let url = `${hostname}ttgame/game_orchard/three_gift/list?os_version=10&version_code=876&device_id=720870999070232&iid=1341841701869182&app_name=news_article_lite&device_platform=android&device_type=Mi+10&channel=lite_xiaomi_64&aid=35&version_name=8.7.6&update_version_code=87610`
     let urlObject = populateGetUrl(url)
     await httpGet(urlObject,caller)
     let result = httpResult;
@@ -1016,7 +1016,7 @@ async function QueryTreeThreeGift() {
 //种树-水滴任务列表
 async function QueryTreeWaterTask() {
     let caller = printCaller()
-    let url = `${hostname}/ttgame/game_orchard/tasks/list?aid=35&update_version_code=87610&device_platform=android&&device_type=Mi+10`
+    let url = `${hostname}/ttgame/game_orchard/tasks/list?version=17&address_book_authorized=0&enter_type=61011&os_version=10&version_code=876&device_id=720870999070232&iid=1341841701869182&app_name=news_article_lite&device_platform=android&device_type=Mi+10&channel=lite_xiaomi_64&aid=35&version_name=8.7.6&update_version_code=87610`
     let urlObject = populateGetUrl(url)
     await httpGet(urlObject,caller)
     let result = httpResult;
@@ -1037,7 +1037,7 @@ async function QueryTreeWaterTask() {
 //种树-水滴领奖
 async function TreeWaterReward(task_id) {
     let caller = printCaller()
-    let url = `${hostname}/ttgame/game_orchard/tasks/reward?task_id=${task_id}&do_action=0&aid=35`
+    let url = `${hostname}/ttgame/game_orchard/tasks/reward?task_id=${task_id}&do_action=0&extra_ad_num=0&version=17&os_version=10&version_code=876&device_id=720870999070232&iid=1341841701869182&app_name=news_article_lite&device_platform=android&device_type=Mi+10&channel=lite_xiaomi_64&aid=35&version_name=8.7.6&update_version_code=87610`
     let urlObject = populateGetUrl(url)
     await httpGet(urlObject,caller)
     let result = httpResult;
@@ -1053,7 +1053,7 @@ async function TreeWaterReward(task_id) {
 //种树-浇水
 async function TreeWater() {
     let caller = printCaller()
-    let url = `${hostname}/ttgame/game_orchard/tree/water?aid=35&update_version_code=87610&device_platform=android&&device_type=Mi+10`
+    let url = `${hostname}/ttgame/game_orchard/tree/water?version=17&os_version=10&version_code=876&device_id=720870999070232&iid=1341841701869182&app_name=news_article_lite&device_platform=android&device_type=Mi+10&channel=lite_xiaomi_64&aid=35&version_name=8.7.6&update_version_code=87610`
     let urlObject = populateGetUrl(url)
     await httpGet(urlObject,caller)
     let result = httpResult;
@@ -1099,7 +1099,7 @@ async function TreeWaterTenTimes() {
 //种树-信息
 async function QueryTreeStatus() {
     let caller = printCaller()
-    let url = `${hostname}/ttgame/game_orchard/polling_info?aid=35&update_version_code=87610&device_platform=android&&device_type=Mi+10`
+    let url = `${hostname}/ttgame/game_orchard/polling_info?version=17&enter_type=61011&os_version=10&version_code=876&device_id=720870999070232&iid=1341841701869182&app_name=news_article_lite&device_platform=android&device_type=Mi+10&channel=lite_xiaomi_64&aid=35&version_name=8.7.6&update_version_code=87610`
     let urlObject = populateGetUrl(url)
     await httpGet(urlObject,caller)
     let result = httpResult;
