@@ -650,7 +650,7 @@ async function FarmOfflineDouble() {
 //农场-领取三餐礼包
 async function RewardFarmThreeGift(gift_id) {
     let caller = printCaller()
-    let url = `${hostname}/ttgame/game_orchard/three_gift/reward?task_id=${task_id}&watch_ad=0&extra_ad_num=0&os_version=10&version_code=876&device_id=720870999070232&iid=1341841701869182&app_name=news_article_lite&device_platform=android&device_type=Mi+10&channel=lite_xiaomi_64&aid=35&version_name=8.7.6&update_version_code=87610`
+    let url = `${hostname}/ttgame/game_orchard/three_gift/reward?gift_id=${gift_id}&watch_ad=0&double=0&device_platform=android&device_type=Mi+10&aid=35&update_version_code=87610`
     let urlObject = populateGetUrl(url)
     await httpGet(urlObject,caller)
     let result = httpResult;
@@ -666,7 +666,7 @@ async function RewardFarmThreeGift(gift_id) {
 //农场-三餐礼包状态
 async function QueryFarmThreeGift() {
     let caller = printCaller()
-    let url = `${hostname}/ttgame/game_farm/gift/list?game_client_version_code=2&device_id=720870999070232&device_platform=android&aid=35&os_version=10&update_version_code=87610&tma_jssdk_version=2.31.1.1&sid&version_code=876&install_id=1341841701869182&app_name=news_article_lite&device_type=Mi+10&channel=lite_xiaomi_64&host_app_name=undefined&activity_id&credit_type&use_tomato=0&ios_new_version=false&SDKVersion=2.31.1&deviceScore=%5Bobject+Object%5D`
+    let url = `${hostname}/ttgame/game_farm/gift/list?device_platform=android&aid=35&update_version_code=87610&device_type=Mi+10`
     let urlObject = populateGetUrl(url)
     await httpGet(urlObject,caller)
     let result = httpResult;
