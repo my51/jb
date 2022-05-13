@@ -5,9 +5,6 @@
  * 
  * 5-13	完成签到,宝箱信息功能 --脚本开源,欢迎
  * 5-13	增加箱提示,增加分享任务
- * 
- * 
- * 感谢所有测试人员
  * ========= 青龙--配置文件 =========
  * 变量格式: export ksjsb_data='xxxxx'  多个账号用 @分割 或者 换行分割
  */
@@ -44,7 +41,6 @@ async function tips(ckArr) {
 	console.log(`\n===============================================\n 脚本执行 - 北京时间(UTC+8): ${new Date(
 		new Date().getTime() + new Date().getTimezoneOffset() * 60 * 1000 + 8 * 60 * 60 * 1000
 	).toLocaleString()} \n===============================================\n`);
-	await wyy();
 
 	console.log(`\n=================== 共找到 ${ckArr.length} 个账号 ===================`);
 	debugLog(`【debug】 这是你的账号数组:\n ${ckArr}`);
@@ -73,13 +69,13 @@ async function start() {
 
 	console.log("开始 用户信息");
 	await user_info();
-	await $.wait(3 * 1000);
+	await $.wait(2 * 1000);
 
 
 
 	console.log("开始 宝箱信息");
 	await box_info();
-	await $.wait(3 * 1000);
+	await $.wait(2 * 1000);
 
 	console.log("开始 每天一次任务");
 	if (local_hours() == 7) {
@@ -89,7 +85,7 @@ async function start() {
 
 		console.log("开始 分享");
 		await do_Share();
-		await $.wait(3 * 1000);
+		await $.wait(2 * 1000);
 	} else {
 		console.log("每天 7 点做 签到,分享 任务,时间不对跳过执行!");
 	}
@@ -221,8 +217,8 @@ async function box_info() {
 			console.log(`\n 宝箱信息: 宝箱冷却中, ${result.data.openTime / 1000 / 60} 分钟 后重试吧! \n`);
 			msg += `\n 宝箱信息: 宝箱冷却中, ${result.data.openTime / 1000 / 60} 分钟 后重试吧! \n`;
 		} else {
-			console.log(`\n 宝箱信息:  ${usre_name} 可以宝箱信息,去 宝箱信息 喽! \n`);
-			msg += `\n 宝箱信息:  ${usre_name} 可以宝箱信息,去 宝箱信息 喽! \n`;
+			console.log(`\n 宝箱信息:  ${usre_name} 可以开宝箱了,去 开宝箱喽! \n`);
+			msg += `\n 宝箱信息:  ${usre_name} 可以开宝箱了,去 开宝箱喽! \n`;
 			await $.wait(3 * 1000);
 			await open_box();
 		}
@@ -440,26 +436,6 @@ function local_minutes() {
 
 
 
-
-//每日网抑云
-function wyy() {
-	return new Promise((resolve) => {
-		let url = {
-			url: `https://keai.icu/apiwyy/api`
-		}
-		$.get(url, async (err, resp, data) => {
-			try {
-				data = JSON.parse(data)
-				console.log(`\n 【网抑云时间】: ${data.content}  by--${data.music}`);
-
-			} catch (e) {
-				$.logErr(e, resp);
-			} finally {
-				resolve()
-			}
-		}, timeout = 3 * 1000)
-	})
-}
 
 
 // ============================================ get请求 ============================================ \\
