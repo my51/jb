@@ -19,30 +19,14 @@ let ck = "";
 let usre_name;
 
 ///////////////////////////////////////////////////////////////////
-let Version = '\n\n'
-let thank = `\n 感谢 xx 的投稿\n`
-let test = `\n 脚本测试中,有bug及时反馈!\n`
-///////////////////////////////////////////////////////////////////
 
 async function tips(ckArr) {
 
-	console.log(`${Version}`);
-	msg += `${Version}`
-
-	// console.log(thank);
-	// msg += `${thank}`
-
-	console.log(test);
-	msg += `${test}`
-
-	// console.log(`\n 脚本已恢复正常状态,请及时更新! `);
-	// msg += `脚本已恢复正常状态,请及时更新`
-
-	console.log(`\n===============================================\n 脚本执行 - 北京时间(UTC+8): ${new Date(
+	console.log(`\n============================================\n 脚本执行 - 北京时间(UTC+8): ${new Date(
 		new Date().getTime() + new Date().getTimezoneOffset() * 60 * 1000 + 8 * 60 * 60 * 1000
-	).toLocaleString()} \n===============================================\n`);
+	).toLocaleString()} \n============================================\n`);
 
-	console.log(`\n=================== 共找到 ${ckArr.length} 个账号 ===================`);
+	console.log(`\n========= 共找到 ${ckArr.length} 个账号 =========`);
 	debugLog(`【debug】 这是你的账号数组:\n ${ckArr}`);
 }
 
@@ -217,8 +201,8 @@ async function box_info() {
 			console.log(`\n 宝箱信息: 宝箱冷却中, ${result.data.openTime / 1000 / 60} 分钟 后重试吧! \n`);
 			msg += `\n 宝箱信息: 宝箱冷却中, ${result.data.openTime / 1000 / 60} 分钟 后重试吧! \n`;
 		} else {
-			console.log(`\n 宝箱信息:  ${usre_name} 可以开宝箱了,去 开宝箱喽! \n`);
-			msg += `\n 宝箱信息:  ${usre_name} 可以开宝箱了,去 开宝箱喽! \n`;
+			console.log(`\n 宝箱信息:  ${usre_name} 去 开宝箱喽! \n`);
+			msg += `\n 宝箱信息:  ${usre_name} 去 开宝箱喽! \n`;
 			await $.wait(3 * 1000);
 			await open_box();
 		}
