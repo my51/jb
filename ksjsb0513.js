@@ -1,20 +1,15 @@
 /**
- * 脚本地址: https://raw.githubusercontent.com/yml2213/javascript/master/ksjsb/ksjsb.js
- * 转载请留信息,谢谢
- * 
  * 快手极速版  请使用完整版ck
  * 
- * cron 0-59/30 6-20 * * *  yml2213_javascript_master/ksjsb.js
+ * cron 0-59/30 6-20 * * *  
  * 
- * 5-13	完成签到,宝箱信息功能 --脚本开源,欢迎 pr
+ * 5-13	完成签到,宝箱信息功能 --脚本开源,欢迎
  * 5-13	增加箱提示,增加分享任务
  * 
  * 
  * 感谢所有测试人员
  * ========= 青龙--配置文件 =========
  * 变量格式: export ksjsb_data='xxxxx'  多个账号用 @分割 或者 换行分割
- *
- * 神秘代码: aHR0cHM6Ly90Lm1lL3ltbF90Zw==
  */
 const $ = new Env("快手极速版");
 const notify = $.isNode() ? require("./sendNotify") : "";
@@ -27,9 +22,9 @@ let ck = "";
 let usre_name;
 
 ///////////////////////////////////////////////////////////////////
-let Version = '\n yml   2022/5/13-2      完成签到,宝箱,分享 功能,请使用完整版ck\n'
+let Version = '\n\n'
 let thank = `\n 感谢 xx 的投稿\n`
-let test = `\n 脚本测试中,有bug及时反馈!     脚本测试中,有bug及时反馈!\n`
+let test = `\n 脚本测试中,有bug及时反馈!\n`
 ///////////////////////////////////////////////////////////////////
 
 async function tips(ckArr) {
@@ -78,25 +73,25 @@ async function start() {
 
 	console.log("开始 用户信息");
 	await user_info();
-	await $.wait(2 * 1000);
+	await $.wait(3 * 1000);
 
 
 
 	console.log("开始 宝箱信息");
 	await box_info();
-	await $.wait(2 * 1000);
+	await $.wait(3 * 1000);
 
 	console.log("开始 每天一次任务");
-	if (local_hours() == 8) {
+	if (local_hours() == 7) {
 		console.log("开始 签到信息");
 		await sign_info();
 		await $.wait(5 * 1000);
 
 		console.log("开始 分享");
 		await do_Share();
-		await $.wait(2 * 1000);
+		await $.wait(3 * 1000);
 	} else {
-		console.log("每天 8 点做 签到,分享 任务,时间不对跳过执行!");
+		console.log("每天 7 点做 签到,分享 任务,时间不对跳过执行!");
 	}
 
 
