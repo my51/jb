@@ -1,8 +1,6 @@
 /*
 今日头条极速版
 IOS/安卓: 今日头条极速版
-邀请码： 
-老用户每天几毛，新用户可能收益高点
 普通版定时： 1-59/15 6-23 * * *
 激进版定时： 1-59/5 * * * *
 多用户跑的时间会久一点，自己看着改定时吧
@@ -39,7 +37,7 @@ let userAgent = ($.isNode() ? process.env.jrttjsbUA : $.getdata('jrttjsbUA')) ||
 let userAgentArr = []
 let userHeader = ($.isNode() ? process.env.jrttjsbHeader : $.getdata('jrttjsbHeader')) || '';
 let userHeaderArr = []
-let jrttjsbFarm = ($.isNode() ? process.env.jrttjsbFarm : $.getdata('jrttjsbFarm')) || 1;
+let jrttjsbFarm = ($.isNode() ? process.env.jrttjsbFarm : $.getdata('jrttjsbFarm')) || 0;
 
 let userIdx = 0
 let UAcount = 0
@@ -76,7 +74,7 @@ let adIdList = [26, 181, 186, 187, 188, 189, 190, 195, 210, 214, 216, 225, 308, 
     .finally(() => $.done())
 
 function showUpdateMsg() {
-    console.log('\n2022.04.20 5:30 更新：增加推送奖励，修复一个UA的bug，更改默认UA为安卓\n')
+    console.log('\n2023.02.05 5:30 更新：增加推送奖励，修复一个UA的bug，更改默认UA为安卓\n')
 }
 
 //通知
@@ -147,10 +145,10 @@ async function RunMultiUser() {
         //任务页
         await QueryUserInfo(1)
         if(userStatus[userIdx]==true) {
-            await GetNewTabs()
+            //await GetNewTabs()
             await QuerySleepStatus()
-            await QueryWalkInfo()
-            await DoneEat()
+            //await QueryWalkInfo()
+            //await DoneEat()
 
             for(let adId of adIdList) await ExcitationAd(adId)
             //console.log(validList)
@@ -158,7 +156,7 @@ async function RunMultiUser() {
         }
     }
 
-    await ReadArticles()
+    //await ReadArticles()
 
     for(userIdx=0; userIdx<userHeaderArr.length; userIdx++) {
         if(userStatus[userIdx]==true) await QueryUserInfo(0)
@@ -170,11 +168,11 @@ async function RunMultiUser() {
                 //农场
                 //await EnterFarm()
                 //await $.wait(1500)
-                await QueryFarmThreeGift()
-                await QueryFarmInfo()
-                await QueryFarmLandStatus()
-                await QueryFarmSignStatus()
-                await QueryFarmTask()
+                //await QueryFarmThreeGift()
+                //await QueryFarmInfo()
+                //await QueryFarmLandStatus()
+                //await QueryFarmSignStatus()
+                //await QueryFarmTask()
 
                 //种树
                 await QueryTreeChallenge()
